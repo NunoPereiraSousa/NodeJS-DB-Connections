@@ -13,7 +13,6 @@ const login = (req, res) => {
                     tokenMiddleware.generateToken({
                         user: req.body.username
                     }, (token) => {
-                        console.log(1);
                         res.status(200).json(token);
                     })
                 } else res.status(401).send("Not Authorized");
@@ -22,6 +21,35 @@ const login = (req, res) => {
     });
 }
 
+const register = (req, res) => {
+    bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(req.body.password, salt, function (err, hash) {
+
+            const newUser = new user({
+                username: req.body.username,
+                password: hash
+            });
+
+            user.find({
+                username: req.body.username
+            }, function (err, user) {
+                if (err) res.status(400).send(err);
+
+                if (user.length > 0) res.status(406).send("Duplicated User");
+                else {
+                    newUser.save(function (err, newUser) {
+                        if (err) {
+                            res.status(400).send(err);
+                        }
+                        res.status(200).json("User Registered Successfully");
+                    })
+                }
+            })
+        });
+    });
+}
+
 module.exports = {
-    login
+    login,
+    register
 };

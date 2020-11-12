@@ -13,5 +13,6 @@ router.get("/students/:name", studentsController.getStudentsByName);
 router.post("/add-students", studentsController.newStudent);
 
 router.post("/login", usersController.login);
+router.post("/register", usersController.register);
 
 module.exports = router;

@@ -21,7 +21,7 @@ const tokenMiddleware = require("./Middleware/webTokens");
 // });
 
 const auth = function(req, res, next) {
-    let exceptions = ["/login"]; 
+    let exceptions = ["/login", "/register"]; 
     if(exceptions.indexOf(req.url) >= 0) {
         next();
     } else {
