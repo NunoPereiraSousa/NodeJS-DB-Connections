@@ -8,7 +8,7 @@ In this repository you will find out how to connect to a database using:
 * MongoDB 
 * Tokens - JSON Web Tokens
 
-I used MySQL (Sequelize) and MongoDB as two options to work with Node.js. You can choose one of those two!
+I used MySQL (Sequelize) and MongoDB as two options to work with Node.js. You can choose one of those two!  
 It includes **Sign In** and **Sign Up** functionalities with tokens being generated.
 
 ### Instalation
