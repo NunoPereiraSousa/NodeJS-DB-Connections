@@ -18,7 +18,6 @@ $ node server.js **or** nodemon
 ```
 
 ### Creator ###
----------------------------------------------------------------
 
 * [Email](mailto:9180579@esmad.ipp.pt)
 * [Instagram](https://www.instagram.com/nunopereirasousa/)
