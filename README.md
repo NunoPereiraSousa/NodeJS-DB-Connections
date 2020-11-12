@@ -26,5 +26,6 @@ $ node server.js **or** nodemon
 
 ### Thanks
 
-> Nuno Pereira Sousa \ Hope it helps :snake: \
+> Nuno Pereira Sousa
 
+Hope it helps :snake:
