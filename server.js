@@ -16,14 +16,14 @@ app.use(bodyParser.urlencoded({
 app.use(router);
 
 // SEQUELIZE
-const sequelize = new Sequelize("joaoferr_dtam", "joaoferr_dtam", "5SNhnBGKPUJTYy2M", {
-    host: "www.joaoferreira.eu",
-    dialect: "mysql"
-});
+// const sequelize = new Sequelize("joaoferr_tsiw", "joaoferr_tsiw", "GAa8xvmV3eKrVa8C", {
+//     host: "www.joaoferreira.eu",
+//     dialect: "mysql"
+// });
 
-sequelize.authenticate().then(errors => {
-    errors ? console.error(`Unable to connect to the database: ${errors}`) : console.log("Connected to mysql")
-});
+// sequelize.authenticate().then(errors => {
+//     errors ? console.error(`Unable to connect to the database: ${errors}`) : console.log("Connected to mysql")
+// });
 
 // MONGOOSE
 mongoose.connect("mongodb+srv://dtam:5SNhnBGKPUJTYy2M@cluster0.wsbmj.mongodb.net/DTAM?retryWrites=true&w=majority", {

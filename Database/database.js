@@ -5,7 +5,7 @@ const {
 } = require("sequelize");
 const mongoose = require("mongoose");
 
-const sequelize = new Sequelize("joaoferr_dtam", "joaoferr_dtam", "5SNhnBGKPUJTYy2M", {
+const sequelize = new Sequelize("joaoferr_tsiw", "joaoferr_tsiw", "GAa8xvmV3eKrVa8C", {
     host: "www.joaoferreira.eu",
     dialect: "mysql"
 });
@@ -13,11 +13,11 @@ const sequelize = new Sequelize("joaoferr_dtam", "joaoferr_dtam", "5SNhnBGKPUJTY
 class Teacher extends Model {};
 
 Teacher.init({
-    nome: DataTypes.STRING,
-    idade: DataTypes.INTEGER
+    nome: DataTypes.STRING, // name
+    idade: DataTypes.INTEGER // age
 }, {
     sequelize,
-    modelName: "NunoTeacher"
+    modelName: "Lecture"
 });
 
 sequelize.sync().then().catch(error => {
@@ -31,6 +31,6 @@ const studentSchema = new mongoose.Schema({
 
 const student = mongoose.model("student", studentSchema);
 
-module.exports = student; 
+// module.exports = student; 
 
-// module.exports = Teacher;
+module.exports = Teacher;

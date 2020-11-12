@@ -10,8 +10,8 @@ const getTeachers = (req, res) => {
 
 const createTeacher = (req, res) => {
     Teacher.create({
-        nome: req.body.nome,
-        idade: req.body.idade
+        nome: req.body.nome, // name
+        idade: req.body.idade // age
     }).then(newTeacher => {
         res.status(201).json(newTeacher);
     }).catch(error => {
