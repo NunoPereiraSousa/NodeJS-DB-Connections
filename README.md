@@ -4,12 +4,14 @@
 
 In this repository you will find out how to connect to a database using:
 * Node.js
-* MySQL (Sequelize)
 * MongoDB 
 * Tokens - JSON Web Tokens
 
-I used MySQL (Sequelize) and MongoDB as two options to work with Node.js. You can choose one of those two!  
+I used MongoDB as an option to work with Node.js.
 It includes **Sign In** and **Sign Up** functionalities with tokens being generated.
+(You won't be able to access to the rest of the functionalities without having a token).
+
+The API Documentation (using Swagger UI) can be found in the brench "swagger-ui-express".
 
 ### Instalation
 ```sh
