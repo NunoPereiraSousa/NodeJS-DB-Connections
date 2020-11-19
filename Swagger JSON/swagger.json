@@ -1,0 +1,396 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "NodeJS Database Connections",
+        "description": "API Documentation for NodeJS Database Connections",
+        "version": "1.0"
+    },
+    "produces": ["application/json"],
+    "schemes": ["http"],
+    "components": {
+        "schemas":{
+            "Student": {
+                "type": "object",
+                "required": ["name", "age"],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }, 
+                    "age": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "required": ["username", "password"],
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    }, 
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearer": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }, 
+    "paths": {
+        "/students": {
+            "get": {
+                "tags": ["Students"],
+                "description": "Get Students List",
+                "responses": {
+                    "200": {
+                        "description": "Students List",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#components/schemas/Student"
+                                },
+                                "examples": {
+                                    "Students List": [
+                                        {
+                                            "_id": "5fac346470a04c151asd4a66511f",
+                                            "name": "Nuno",
+                                            "age": 20,
+                                            "__v": 0
+                                        },
+                                        {
+                                            "_id": "5fac34797sa1536665665",
+                                            "name": "Mafalda",
+                                            "age": 18,
+                                            "__v": 0
+                                        }
+                                    ]
+                                }
+                            },
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Server could not understand the request due to invalid syntax.",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {
+                                    "Error": {
+                                        "value": "Error"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "You must authenticate yourself to get the requested response",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {
+                                    "Unauthorized": {
+                                        "value": "You must authenticate yourself to get the requested response"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [{
+                    "bearer": []
+                }]
+            },    
+            "post": {
+                "description": "Create Student",
+                "tags": ["Students"],
+                "requestBody": {
+                    "content": {
+                        "application/json" : {
+                            "schema": {
+                                "$ref": "#components/schemas/Student"
+                            },
+                            "examples": {
+                                "Student": {
+                                    "value": {
+                                        "name":"Maria", 
+                                        "age": 16
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Student",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": ""
+                                },
+                                "examples": { 
+                                    "Student": {
+                                        "_id": "5fac346470a04c174c2e121f",
+                                        "name": "Daniela",
+                                        "age": 20,
+                                        "__v": 0
+                                    }
+                                }
+                            },
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Server could not understand the request due to invalid syntax.",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {
+                                    "Error": {
+                                        "value": "Error"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "You must authenticate yourself to get the requested response",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {
+                                    "Unauthorized": {
+                                        "value": "You must authenticate yourself to get the requested response"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/students/{name}": {
+            "get": {
+                "tags": ["Students"],
+                "description": "Get Student Information by Name",
+                "parameters": [{
+                    "name": "name",
+                    "in": "path",
+                    "description": "Name of the student",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Student Information",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#components/schemas/Student"
+                                },
+                                "examples": { 
+                                    "Student": {
+                                        "_id": "5fac346470a04c174c2e121f",
+                                        "name": "Nuno",
+                                        "age": 20,
+                                        "__v": 0
+                                    }
+                                }
+                            },
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Server could not understand the request due to invalid syntax.",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {
+                                    "Error": {
+                                        "value": "Error"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "You must authenticate yourself to get the requested response",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {
+                                    "Unauthorized": {
+                                        "value": "You must authenticate yourself to get the requested response"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [{
+                    "bearer": []
+                }]
+            }
+        },
+        "/login": {
+            "post": {
+                "description": "Login",
+                "tags": ["Users"],
+                "requestBody": {
+                    "content": {
+                        "application/json" : {
+                            "schema": {
+                                "$ref": "#components/schemas/User"
+                            },
+                            "examples": {
+                                "User": {
+                                    "value": {
+                                        "username":"mafalda", 
+                                        "password": "12345"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Token",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {
+                                    "Sucess": {
+                                        "value": "Bearer Token"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Server could not understand the request due to invalid syntax.",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {
+                                    "Error": {
+                                        "value": "Error"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/register": {
+            "post": {
+                "description": "Register",
+                "tags": ["Users"],
+                "requestBody": {
+                    "content": {
+                        "application/json" : {
+                            "schema": {
+                                "$ref": "#components/schemas/User"
+                            },
+                            "examples": {
+                                "User": {
+                                    "value": {
+                                        "username":"mafalda", 
+                                        "password": "12345"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "examples": {
+                                "Success": {
+                                    "value": "User Created with Success"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Server could not understand the request due to invalid syntax.",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {
+                                    "Error": {
+                                        "value": "Error"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "Duplicated User",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                },
+                                "examples": {
+                                    "Error": {
+                                        "value": "Duplicated User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

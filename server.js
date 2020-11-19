@@ -10,6 +10,12 @@ const {
 const bodyParser = require('body-parser');
 const tokenMiddleware = require("./Middleware/webTokens");
 
+// Swagger
+const swaggerUi = require("swagger-ui-express"); 
+const swaggerDocument = require("./Swagger JSON/swagger.json")
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {explorer: true})); 
+
 // SEQUELIZE
 // const sequelize = new Sequelize("joaoferr_tsiw", "joaoferr_tsiw", "GAa8xvmV3eKrVa8C", {
 //     host: "www.joaoferreira.eu",
@@ -21,7 +27,7 @@ const tokenMiddleware = require("./Middleware/webTokens");
 // });
 
 const auth = function(req, res, next) {
-    let exceptions = ["/login", "/register"]; 
+    let exceptions = ["/login", "/register", "/api-docs"]; 
     if(exceptions.indexOf(req.url) >= 0) {
         next();
     } else {
