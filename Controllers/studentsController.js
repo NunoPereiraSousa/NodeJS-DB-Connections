@@ -1,5 +1,5 @@
 // const student = require("../Models/studentModel");
-const student = require("../Database/database");
+const student = require("../Models/studentModel");
 const {
     validationResult,
     body,

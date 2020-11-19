@@ -21,7 +21,7 @@ $ node server.js **or** nodemon
 
 ### Creator
 
-* [Email](mailto:9180579@esmad.ipp.pt)
+* [Email](mailto:nunopereirasousa00@gmail.com)
 * [Instagram](https://www.instagram.com/nunopereirasousa/)
 * [Facebook](https://www.facebook.com/nuno.sousa.9655806/)
 * Discord - ItWasAPleasure#1150
